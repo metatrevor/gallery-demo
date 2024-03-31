@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import axios from "axios";
 import {Container, Row, Navbar, CardGroup, Col, Card, Form, Button} from "react-bootstrap";
+import {Link} from "react-router-dom";
 
 export default function ImageGrid() {
     const [images, setImages] = useState([])
@@ -65,7 +66,7 @@ export default function ImageGrid() {
                                 <Card className="md-3">
                                     <Card.Img src={image.previewURL}/>
                                     <Card.Footer>
-                                        <small className="text-muted">Link to large image</small>
+                                        <Link to={`/detail/${image.id}`}>Open Image</Link>
                                     </Card.Footer>
                                 </Card>
                             </Col>
