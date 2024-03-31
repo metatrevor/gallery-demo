@@ -1,7 +1,7 @@
-import {Button, Card, Container, Form, Row} from "react-bootstrap";
+import { Card, Container, Row, Table} from "react-bootstrap";
 import {useParams} from "react-router-dom";
 import axios from "axios";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 
 export default function ImageDetail() {
@@ -24,18 +24,34 @@ export default function ImageDetail() {
         })
     }
 
+    useEffect(() => {
+            getLargeImageURL()
+        }
+    )
+
     return (
         <Container>
-            <Row>
-                <Card.Img src={largeImgUrl}/>
-            </Row>
-
-            <Row>
-                <Form.Group className="mb-3 mt-3">
-                    <p>user: {user}</p>
-                    <p>tags: {tags}</p>
-                    <Button onClick={getLargeImageURL}>Load Large Image</Button>
-                </Form.Group>
+            <Row className="mt-3">
+                <Card>
+                    <Card.Title>Image Detail</Card.Title>
+                    <Card.Img src={largeImgUrl}/>
+                    <Card.Body>
+                        <Table striped bordered hover>
+                            <thead>
+                            <tr>
+                                <th>User</th>
+                                <th>Tags</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>{user}</td>
+                                <td>{tags}</td>
+                            </tr>
+                            </tbody>
+                        </Table>
+                    </Card.Body>
+                </Card>
             </Row>
         </Container>
     )
