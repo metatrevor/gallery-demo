@@ -1,7 +1,8 @@
 import {useState} from 'react'
 import axios from "axios";
 import {Container, Row, Navbar, CardGroup, Col, Card, Form, Button} from "react-bootstrap";
-import {Link, redirect} from "react-router-dom";
+import AppNavBar from "./NavBar.jsx";
+
 
 export default function ImageGrid() {
     const [images, setImages] = useState([])
@@ -28,14 +29,7 @@ export default function ImageGrid() {
     return (
         <>
             <Container>
-                <Row>
-                    <Navbar expand="lg" className="bg-body-tertiary">
-                        <Container>
-                            <Navbar.Brand href="#home">Gallery Demo</Navbar.Brand>
-                        </Container>
-                    </Navbar>
-                </Row>
-
+                <AppNavBar/>
                 <Row className="mt-3">
                     <Row>
                         <Form>

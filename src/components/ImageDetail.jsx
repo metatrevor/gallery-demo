@@ -2,6 +2,7 @@ import { Card, Container, Row, Table} from "react-bootstrap";
 import {useParams} from "react-router-dom";
 import axios from "axios";
 import {useEffect, useState} from "react";
+import AppNavBar from "./NavBar.jsx";
 
 
 export default function ImageDetail() {
@@ -31,6 +32,7 @@ export default function ImageDetail() {
 
     return (
         <Container>
+            <AppNavBar/>
             <Row className="mt-3">
                 <Card>
                     <Card.Title>Image Detail</Card.Title>
