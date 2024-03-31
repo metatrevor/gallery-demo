@@ -21,6 +21,11 @@ export default function ImageGrid() {
         })
     }
 
+    function handleSearchForm(event) {
+        event.preventDefault();
+        pullImages();
+    }
+
     function updateSearchTerm(event) {
         const value = event.target.value;
         setSearchTerm(value);
@@ -32,7 +37,7 @@ export default function ImageGrid() {
                 <AppNavBar/>
                 <Row className="mt-3">
                     <Row>
-                        <Form>
+                        <Form onSubmit={handleSearchForm}>
                             <Form.Group className="mb-3">
                                 <Form.Label>Search</Form.Label>
                                 <Form.Control
@@ -44,11 +49,9 @@ export default function ImageGrid() {
                             </Form.Group>
                         </Form>
                     </Row>
-                    <Row>
-                        <Form.Group className="mb-3">
+                    <Col className="md-3">
                             <Button onClick={pullImages}>Submit Search</Button>
-                        </Form.Group>
-                    </Row>
+                    </Col>
                 </Row>
 
 
