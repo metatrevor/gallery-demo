@@ -22,8 +22,8 @@ export default function ImageGrid() {
     }
 
     function updateSearchTerm(event) {
-            const value = event.target.value;
-            setSearchTerm(value);
+        const value = event.target.value;
+        setSearchTerm(value);
     }
 
     return (

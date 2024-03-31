@@ -1,4 +1,4 @@
-import { Card, Container, Row, Table} from "react-bootstrap";
+import {Card, Container, Row, Table} from "react-bootstrap";
 import {useParams} from "react-router-dom";
 import axios from "axios";
 import {useEffect, useState} from "react";
