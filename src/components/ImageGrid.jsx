@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import axios from "axios";
 import {Container, Row, Navbar, CardGroup, Col, Card, Form, Button} from "react-bootstrap";
-import {Link} from "react-router-dom";
+import {Link, redirect} from "react-router-dom";
 
 export default function ImageGrid() {
     const [images, setImages] = useState([])
@@ -14,7 +14,6 @@ export default function ImageGrid() {
                 setImages(
                     result.data.hits
                 )
-                console.log(result.data)
             }
         ).catch(error => {
             console.log(error)
@@ -64,10 +63,9 @@ export default function ImageGrid() {
                         {images.map((image, index) => (
                             <Col key={index} sm={4}>
                                 <Card className="md-3">
-                                    <Card.Img src={image.previewURL}/>
-                                    <Card.Footer>
-                                        <Link to={`/detail/${image.id}`}>Open Image</Link>
-                                    </Card.Footer>
+                                    <Card.Img src={image.previewURL} onClick={() => {
+                                        window.open(`/detail/${image.id}`, '_blank')?.focus()
+                                    }}/>
                                 </Card>
                             </Col>
                         ))}
