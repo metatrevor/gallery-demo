@@ -6,11 +6,12 @@ import AppNavBar from "./NavBar.jsx";
 
 export default function ImageGrid() {
     const [images, setImages] = useState([])
+    const [orientation, setOrientation] = useState('horizontal')
     const [searchTerm, setSearchTerm] = useState('moon')
     const defaultImageCount = 12
 
     function pullImages() {
-        axios.get(`https://pixabay.com/api/?key=${import.meta.env.VITE_APP_PIXABAY_KEY}&q=${searchTerm}&image_type=photo&per_page=${defaultImageCount}`).then(
+        axios.get(`https://pixabay.com/api/?key=${import.meta.env.VITE_APP_PIXABAY_KEY}&orientation=${orientation}&q=${searchTerm}&image_type=photo&per_page=${defaultImageCount}`).then(
             result => {
                 setImages(
                     result.data.hits
@@ -47,6 +48,21 @@ export default function ImageGrid() {
                                     placeholder="search"
                                 />
                             </Form.Group>
+
+                          <Form.Group className="mb-3">
+                            <Form.Label>Select Orientation</Form.Label>
+                            <Form.Control
+                                as="select"
+                                value={orientation}
+                                onChange={e => {
+                                  setOrientation(e.target.value);
+                                }}
+                            >
+                              <option value="horizontal">Landscape</option>
+                              <option value="vertical">Portrait</option>
+                            </Form.Control>
+                          </Form.Group>
+
                         </Form>
                     </Row>
                     <Col className="md-3">
